@@ -53,6 +53,9 @@ export default function BasicMultiModel({
     }
   };
 
+  // Check if any row contains a file
+  const hasFileInput = formFields.some((field) => field.type === 'file');
+
   return (
     <div className={`${containerClassName} mt-4`}>
       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -74,7 +77,7 @@ export default function BasicMultiModel({
                   {field.label}
                 </th>
               ))}
-              <th className="text-center">Image Preview</th>
+              {hasFileInput && <th className="text-center">Image Preview</th>}
               <th className="text-center">Actions</th>
             </tr>
           </thead>
@@ -112,15 +115,17 @@ export default function BasicMultiModel({
                     )}
                   </td>
                 ))}
-                <td className="text-center">
-                  {row[formFields.find((field) => field.type === 'file')?.name] && (
-                    <img
-                      src={row[formFields.find((field) => field.type === 'file')?.name]}
-                      alt="Preview"
-                      style={{ width: '100px', height: '100px', objectFit: 'cover' }}
-                    />
-                  )}
-                </td>
+                {hasFileInput && (
+                  <td className="text-center">
+                    {row[formFields.find((field) => field.type === 'file')?.name] && (
+                      <img
+                        src={row[formFields.find((field) => field.type === 'file')?.name]}
+                        alt="Preview"
+                        style={{ width: '100px', height: '100px', objectFit: 'cover' }}
+                      />
+                    )}
+                  </td>
+                )}
                 <td className="text-center">
                   <button
                     type="button"
