@@ -11,6 +11,7 @@ import CustomForm from "../../basic_components/Forms/CustomForm";
 import BasicInput from "../../basic_components/Components/BasicInput";
 import BasicCheckbox from "../../basic_components/Components/BasicCheckbox"
 import BasicButton from "../../basic_components/Components/BasicButton"
+import BasicMultiModel from "../../basic_components/Components/BasicMultiModel";
 
 export default function ActionMasterCreate({ router }) {
   const navigate = useNavigate();
@@ -23,6 +24,14 @@ export default function ActionMasterCreate({ router }) {
     mobileValue:"",
     is_active: "",
   });
+
+  const formFields = [
+    { name: 'firstName', label: 'First Name', type: 'text', placeholder: 'Enter first name', required: true },
+    { name: 'lastName', label: 'Last Name', type: 'text', placeholder: 'Enter last name', required: true },
+    // { name: 'email', label: 'Email', type: 'email', placeholder: 'Enter email', required: true },
+    { name: 'file', label: 'Upload Files', type: 'file' },
+  ];
+
   useEffect(() => {
     getData(id);
   }, []);
@@ -203,7 +212,7 @@ export default function ActionMasterCreate({ router }) {
                       placeholder="Enter Action Service Name"
                       onChange={handleTextChange}
                       style={{ padding: '10px' }} 
-                      length={10}
+                      // length={10}
                     />
 
                     <BasicInput
@@ -217,10 +226,19 @@ export default function ActionMasterCreate({ router }) {
                       style={{ padding: '10px' }} 
                       // labelStyle={{ padding: '10px' }}
                       placeholder="Enter your mobile number"
-                      prefix={"+91"} // Pass the prefix for the mobile number
+                      prefix={["+91","+1"]} // Pass the prefix for the mobile number
                       // error={mobileError}  
                       validate={{ required: { value: true } }}
                     />
+                     <Row>
+                      <BasicMultiModel
+                        formFields={formFields}           
+                        onChange={(updatedRows) => setFormData(updatedRows)} // Set formData on change without processing it yet
+                        heading="User Information"          
+                        containerClassName="my-container"  
+                        buttonClassName="btn btn-primary"  
+                      />
+                    </Row>
 
                     <BasicCheckbox
                       name="is_active"
