@@ -1,0 +1,63 @@
+.custom-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90px;
+    /* Adjusted to accommodate the text and the knob */
+    height: 32px;
+    padding: 5px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 1px solid;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin-top: 5px;
+    position: relative;
+    /* Important for absolute positioning of knob */
+    box-sizing: border-box;
+}
+
+.toggle-knob {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    /* Absolute positioning for smoother transitions */
+    top: 5px;
+    left: 5px;
+    /* Default position when inactive */
+    transition: transform 0.3s, left 0.3s;
+    background-color: white;
+}
+
+.toggle-knob.active {
+    left: 65px;
+    /* Adjusted to move knob to the far right */
+}
+
+.toggle-label {
+    font-size: 12px;
+    color: white;
+    pointer-events: none;
+    /* Prevent text from blocking the toggle click */
+    transition: opacity 0.3s, margin 0.3s;
+}
+
+.label-right {
+    margin-left: auto;
+    /* Text moves to the right when inactive */
+    margin-right: 5px;
+}
+
+.label-left {
+    margin-right: auto;
+    /* Text moves to the left when active */
+    margin-left: 5px;
+}
+
+.custom-toggle.active .toggle-label.label-left {
+    /* Text stays on the left when active */
+}
+
+.custom-toggle .toggle-label.label-right {
+    /* Text stays on the right when inactive */
+}
