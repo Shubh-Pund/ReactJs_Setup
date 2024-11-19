@@ -11,7 +11,7 @@ var baseUrlAcademics = ""
 var baseUrlChatfolder = ""
 
 if (env == "testing") {
-  apiUrl = process.env.REACT_APP_GROWTH_API_TESTING;
+  apiUrl = process.env.REACT_APP_BARNBOOK_API;
   imageUrl = process.env.REACT_APP_IMAGE_URL;
   baseUrlSocial = apiUrl
   baseUrlUser = apiUrl
@@ -67,7 +67,7 @@ export const fetchData = async (url, payload, service) => {
     } else if (service === social) {
       api_url = baseUrlSocial + service;
     } else {
-      api_url = baseUrlCms + "cms/";
+      api_url = baseUrlCms;
     }
     // Helper function to make API request
     const makeApiRequest = async (azurADToken) => {

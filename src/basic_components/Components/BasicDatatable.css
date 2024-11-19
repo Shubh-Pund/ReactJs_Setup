@@ -1,0 +1,52 @@
+.table-container {
+    margin: 20px auto;
+    width: 90%;
+  }
+  
+  .search-input {
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .custom-table th {
+    cursor: pointer;
+    background-color: #f4f4f4;
+  }
+  
+  .no-data {
+    text-align: center;
+    font-style: italic;
+  }
+  
+  .pagination {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .pagination button {
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+  
+  .pagination button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  

@@ -12,7 +12,7 @@ import {
 import { Table, Row, Col, Button, Input, Form, Spinner } from "reactstrap";
 import { Filter, DefaultColumnFilter } from "./filters";
 import JobListGlobalFilter from "../../components/Common/GlobalSearchFilter";
-import { fetchData, academics } from "../../services/fetchData";
+import { fetchData } from "../../services/fetchData";
 import { useLocation } from "react-router-dom";
 import Select from "react-select";
 import { LoaderListPage } from "../../pages/Loader/Loader";
@@ -152,7 +152,6 @@ const TableContainer = ({
   const customCanPreviousPage = pageIndexProp > 0;
 
   useEffect(() => {
-    getChannelData();
   }, []);
 
   useEffect(() => {
@@ -176,24 +175,6 @@ const TableContainer = ({
   };
 
   // geting filter drop data
-
-  const getChannelData = async () => {
-    try {
-      const payload = {
-        modelName: "academic_channels",
-        whereCondition: {
-          type: 1,
-          is_active: 1,
-        },
-      };
-      const responseData = await fetchData("getMasterList", payload, academics);
-      if (responseData.code == 1) {
-        setchannelDropData(responseData.data);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
 
 
 
