@@ -99,11 +99,11 @@ const BasicDatatable = ({
 
   return (
     <div
-      className="datatable container-fluid p-4 rounded shadow-sm"
+      className="datatable container-fluid rounded shadow-sm"
       style={{ backgroundColor: "#FFF" }}
     >
       {/* Search and Page Size Selector */}
-      <div className="row align-items-center mb-4">
+      <div className="row align-items-center">
         <div className="col-md-6 col-sm-12 mb-2">
           <div className="d-flex align-items-center">
             <select
@@ -111,7 +111,7 @@ const BasicDatatable = ({
               className="form-select form-select-sm shadow-sm"
               value={pageSize}
               onChange={(e) => onPageSizeChange(Number(e.target.value))}
-              style={{ borderRadius: "8px", width: "120px", padding: "10px" }}
+              style={{ borderRadius: "8px", width: "100px", padding: "10px" }}
             >
               {pageSizeOptions.map((size, index) => (
                 <option key={index} value={size}>
@@ -177,7 +177,7 @@ const BasicDatatable = ({
 
       {/* Table */}
       <div className="table-responsive rounded shadow-sm">
-        <table className="table table-striped table-bordered">
+        <table className="table table-bordered">
           <thead className="thead-light">
             <tr>
               {columns.map((col, index) => (
@@ -186,10 +186,11 @@ const BasicDatatable = ({
                   onClick={() => col.accessor && handleSort(col.accessor)}
                   style={{
                     cursor: col.accessor ? "pointer" : "default",
-                    fontWeight: "600",
+                    fontWeight: "800",
                     color: "#333",
+                    background:"#e6e6e6"
                   }}
-                  className="text-center"
+                  className=""
                 >
                   {col.Header}
                   {sortConfig.key === col.accessor && (
@@ -242,12 +243,12 @@ const BasicDatatable = ({
               sortedData.map((row, rowIndex) => (
                 <tr
                   key={rowIndex}
-                  style={{
-                    backgroundColor: rowIndex % 2 === 0 ? "#fdfdfd" : "#ffffff",
-                  }}
+                  // style={{
+                  //   backgroundColor: rowIndex % 2 === 0 ? "#fdfdfd" : "#ffffff",
+                  // }}
                 >
                   {columns.map((col, colIndex) => (
-                    <td key={colIndex} className="text-center">
+                    <td key={colIndex} className="">
                       {typeof col.accessor === "function"
                         ? col.accessor(row)
                         : row[col.accessor]
